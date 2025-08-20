@@ -1,3 +1,4 @@
+// Load notes from localStorage when the app starts
 window.onload = function() {
     const notesList = document.getElementById('notesList');
     const notes = JSON.parse(localStorage.getItem('notes')) || [];
@@ -27,4 +28,9 @@ function addNote() {
     localStorage.setItem('notes', JSON.stringify(notes));
 
     input.value = ""; // Clear input box
+}
+
+// Register service worker for PWA functionality
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
 }
