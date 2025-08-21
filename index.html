@@ -18,7 +18,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <!-- Welcome Overlay -->
+  <div id="welcome-overlay">
+    <div class="welcome-content">
+      <h2>Welcome to My Notes</h2>
+      <button id="enter-btn">Enter</button>
+    </div>
+  </div>
+  <!-- Notes App -->
+  <div class="container" style="display:none;">
     <h1>My Notes</h1>
     <div class="input-row">
       <input type="text" id="noteInput" placeholder="Type your note here...">

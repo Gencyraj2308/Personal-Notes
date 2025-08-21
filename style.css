@@ -10,6 +10,59 @@ body, html {
   color: #fff;
 }
 
+/* Welcome overlay styles */
+#welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: #111;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.2s;
+}
+
+.welcome-content {
+  text-align: center;
+  color: #fff;
+  font-family: inherit;
+  font-weight: bold;
+  animation: slideUp 1s;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(60px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+#enter-btn {
+  margin-top: 32px;
+  background: #ffe066; /* iOS yellow */
+  color: #222;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3em;
+  font-family: inherit;
+  font-weight: bold;
+  padding: 14px 44px;
+  box-shadow: 0 2px 8px #0002;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.3s;
+  border: 3px solid #ffe066;
+  animation: fadeIn 1.6s;
+}
+
+#enter-btn:hover {
+  background: #fffbe6;
+  transform: scale(1.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+/* Notes App Styles */
 .container {
   max-width: 480px;
   margin: 48px auto 0 auto;
@@ -17,6 +70,7 @@ body, html {
   border-radius: 16px;
   box-shadow: 0 6px 32px #0008;
   padding: 32px 24px;
+  animation: slideUp 1s;
 }
 
 h1 {

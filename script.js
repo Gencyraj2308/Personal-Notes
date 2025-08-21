@@ -3,6 +3,16 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
 
+// Welcome overlay logic
+document.getElementById('enter-btn').onclick = function() {
+  document.getElementById('welcome-overlay').style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('welcome-overlay').style.display = 'none';
+    document.querySelector('.container').style.display = '';
+    document.querySelector('.container').style.animation = 'slideUp 0.8s';
+  }, 700);
+};
+
 // Add note with animation
 function addNote() {
   const input = document.getElementById('noteInput');
