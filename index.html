@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Personal Notes</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Add manifest and theme color for PWA -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#333333">
+  <meta charset="UTF-8">
+  <title>Personal Notes App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#333333">
+  <!-- San Francisco Font (Apple system font stack) -->
+  <style>
+    html {
+      font-family:
+        'SF Pro Display', 'SF Pro Text', 'San Francisco', 
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: bold;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Personal Notes</h1>
-    <input type="text" id="noteInput" placeholder="Type your note here">
-    <button onclick="addNote()">Add Note</button>
+  <div class="container">
+    <h1>My Notes</h1>
+    <div class="input-row">
+      <input type="text" id="noteInput" placeholder="Type your note here...">
+      <button onclick="addNote()">Add Note</button>
+    </div>
     <ul id="notesList"></ul>
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

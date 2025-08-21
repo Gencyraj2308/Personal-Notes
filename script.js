@@ -1,36 +1,40 @@
-// Load notes from localStorage when the app starts
-window.onload = function() {
-    const notesList = document.getElementById('notesList');
-    const notes = JSON.parse(localStorage.getItem('notes')) || [];
-    notes.forEach(note => {
-        const li = document.createElement('li');
-        li.textContent = note;
-        notesList.appendChild(li);
-    });
-};
-
-function addNote() {
-    const input = document.getElementById('noteInput');
-    const noteText = input.value.trim();
-    if (noteText === "") {
-        alert("Please enter something!");
-        return;
-    }
-
-    const notesList = document.getElementById('notesList');
-    const li = document.createElement('li');
-    li.textContent = noteText;
-    notesList.appendChild(li);
-
-    // Save to localStorage
-    const notes = JSON.parse(localStorage.getItem('notes')) || [];
-    notes.push(noteText);
-    localStorage.setItem('notes', JSON.stringify(notes));
-
-    input.value = ""; // Clear input box
-}
-
-// Register service worker for PWA functionality
+// Register service worker for PWA
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
+  navigator.serviceWorker.register('sw.js');
 }
+
+// Add note with animation
+function addNote() {
+  const input = document.getElementById('noteInput');
+  const notesList = document.getElementById('notesList');
+  if (input.value.trim() !== "") {
+    const li = document.createElement('li');
+    li.className = 'note-item';
+
+    // Note text
+    const span = document.createElement('span');
+    span.textContent = input.value;
+
+    // Delete button
+    const delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+    delBtn.className = 'note-delete-btn';
+    delBtn.onclick = function() {
+      li.classList.add('removing');
+      setTimeout(() => {
+        li.remove();
+      }, 350); // Match CSS animation duration
+    };
+
+    li.appendChild(span);
+    li.appendChild(delBtn);
+    notesList.appendChild(li);
+    input.value = "";
+    input.focus();
+  }
+}
+
+// Optional: Enter key adds note
+document.getElementById('noteInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') addNote();
+});
