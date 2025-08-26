@@ -2,69 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Notes — iOS Style</title>
-
-  <!-- Theme & Manifest -->
-  <meta name="theme-color" content="#f2f2f7" />
-  <link rel="manifest" href="manifest.json" />
-
-  <!-- CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Notes</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <div class="app">
-    <!-- TOP BAR -->
-    <div class="topbar glass">
-      <div class="title">
-        <div class="badge" aria-hidden="true"></div>
-        <span>Notes</span>
-      </div>
-      <div class="actions">
-        <button class="icon" id="btnNew">＋</button>
-        <button class="icon" id="btnToggleSidebar">☰</button>
-        <button class="icon" id="btnAI">✨</button>
-        <button class="icon" id="btnSettings">⚙︎</button>
-      </div>
+  <header class="app-header glass">
+    <h1>Notes</h1>
+    <div class="header-actions">
+      <button id="newNoteBtn">+</button>
+      <button id="toggleSidebarBtn">☰</button>
+      <button id="settingsBtn">⚙️</button>
     </div>
+  </header>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar glass" id="sidebar">
-      <div class="header">
-        <strong>Folders</strong>
-        <button class="icon" id="btnAddFolder">＋</button>
-      </div>
-      <div class="pill hint">All notes live in your browser only. No accounts. No quotas.</div>
-      <div id="folderList"></div>
+  <main class="app-main">
+    <aside id="sidebar" class="sidebar glass floating">
+      <h2>Folders</h2>
+      <p>All notes live in your browser only. No accounts. No quotas.</p>
+      <button id="newFolderBtn">+ Folder</button>
     </aside>
 
-    <!-- NOTES LIST -->
-    <section class="list glass">
-      <div class="search glass-panel">
-        🔎 <input id="searchInput" placeholder="Search" />
-      </div>
-      <div class="glass-panel hint" id="smartHints"></div>
-      <div class="notes" id="noteList"></div>
+    <section class="notes-list floating glass">
+      <input type="text" id="searchInput" placeholder="🔍 Search" />
+      <ul id="notesContainer"></ul>
     </section>
 
-    <!-- EDITOR -->
-    <section class="editor glass">
-      <div class="editorHeader">
-        <input id="title" class="editorTitle" placeholder="Title" />
-        <div class="toolbar">
-          <button id="btnShare">⤴︎</button>
-          <button id="btnDelete">🗑</button>
-        </div>
-      </div>
-      <div id="tags" class="glass-panel"></div>
-      <div id="body" class="editorBody" contenteditable="true"></div>
-      <div class="glass-panel hint">
-        Tips: Use #tags, **bold**, *italic*, and `code`. Autosaves instantly.
-      </div>
+    <section class="note-editor floating glass">
+      <input id="noteTitle" placeholder="Title" />
+      <textarea id="noteContent" placeholder="Write your note here..."></textarea>
+      <button id="deleteNoteBtn">🗑️ Delete</button>
     </section>
+  </main>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-content glass floating">
+      <h2>Settings</h2>
+      <label class="toggle">
+        <input type="checkbox" id="themeToggle">
+        <span>Dark Mode</span>
+      </label>
+      <footer>
+        <p>Created by <strong>Bunny</strong> from Andhra University</p>
+      </footer>
+      <button id="closeSettings">Close</button>
+    </div>
   </div>
 
-  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
