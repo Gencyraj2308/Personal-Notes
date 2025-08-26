@@ -1,39 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Personal Notes App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#111">
-  <!-- San Francisco Font (Apple system font stack) -->
-  <style>
-    html {
-      font-family:
-        'SF Pro Display', 'SF Pro Text', 'San Francisco', 
-        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      font-weight: bold;
-    }
-  </style>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes — iOS Style</title>
+
+  <!-- Theme & Manifest -->
+  <meta name="theme-color" content="#f2f2f7" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Welcome Overlay -->
-  <div id="welcome-overlay">
-    <div class="welcome-content">
-      <h2>Welcome to My Notes</h2>
-      <button id="enter-btn">Enter</button>
+  <div class="app">
+    <!-- TOP BAR -->
+    <div class="topbar glass">
+      <div class="title">
+        <div class="badge" aria-hidden="true"></div>
+        <span>Notes</span>
+      </div>
+      <div class="actions">
+        <button class="icon" id="btnNew">＋</button>
+        <button class="icon" id="btnToggleSidebar">☰</button>
+        <button class="icon" id="btnAI">✨</button>
+        <button class="icon" id="btnSettings">⚙︎</button>
+      </div>
     </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar glass" id="sidebar">
+      <div class="header">
+        <strong>Folders</strong>
+        <button class="icon" id="btnAddFolder">＋</button>
+      </div>
+      <div class="pill hint">All notes live in your browser only. No accounts. No quotas.</div>
+      <div id="folderList"></div>
+    </aside>
+
+    <!-- NOTES LIST -->
+    <section class="list glass">
+      <div class="search glass-panel">
+        🔎 <input id="searchInput" placeholder="Search" />
+      </div>
+      <div class="glass-panel hint" id="smartHints"></div>
+      <div class="notes" id="noteList"></div>
+    </section>
+
+    <!-- EDITOR -->
+    <section class="editor glass">
+      <div class="editorHeader">
+        <input id="title" class="editorTitle" placeholder="Title" />
+        <div class="toolbar">
+          <button id="btnShare">⤴︎</button>
+          <button id="btnDelete">🗑</button>
+        </div>
+      </div>
+      <div id="tags" class="glass-panel"></div>
+      <div id="body" class="editorBody" contenteditable="true"></div>
+      <div class="glass-panel hint">
+        Tips: Use #tags, **bold**, *italic*, and `code`. Autosaves instantly.
+      </div>
+    </section>
   </div>
-  <!-- Notes App -->
-  <div class="container" style="display:none;">
-    <h1>My Notes</h1>
-    <div class="input-row">
-      <input type="text" id="noteInput" placeholder="Type your note here...">
-      <button onclick="addNote()">Add Note</button>
-    </div>
-    <ul id="notesList"></ul>
-  </div>
+
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

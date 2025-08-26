@@ -3,17 +3,16 @@
   "short_name": "Notes",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f6f6f6",
-  "theme_color": "#333333",
-  "description": "Capture and manage personal notes with ease.",
+  "background_color": "#f2f2f7",
+  "theme_color": "#f2f2f7",
   "icons": [
     {
-      "src": "android-chrome-192x192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "android-chrome-512x512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
